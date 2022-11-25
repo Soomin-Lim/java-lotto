@@ -1,12 +1,10 @@
 package lotto.controller;
 
-import lotto.domain.LottoGameResult;
-import lotto.domain.LottoPurchaseMoney;
-import lotto.domain.PlayerLotto;
-import lotto.domain.WinningLotto;
+import lotto.domain.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 import java.util.List;
+import java.util.Map;
 
 public class LottoGameController {
 
@@ -47,7 +45,8 @@ public class LottoGameController {
     }
 
     private LottoGameResult createLottoGameResult(PlayerLotto playerLotto, WinningLotto winningLotto) {
-        return new LottoGameResult(playerLotto, winningLotto);
+        Map<Rank, Integer> winningResult = playerLotto.createWinningResult(winningLotto);
+        return new LottoGameResult(winningResult);
     }
 
     private void printLottoGameResult(LottoGameResult lottoGameResult, LottoPurchaseMoney lottoPurchaseMoney) {

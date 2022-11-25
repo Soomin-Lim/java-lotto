@@ -7,8 +7,8 @@ public class LottoGameResult {
 
     private final Map<Rank, Integer> winningResult;
 
-    public LottoGameResult(PlayerLotto playerLotto, WinningLotto winningLotto) {
-        this.winningResult = playerLotto.createWinningResult(winningLotto);
+    public LottoGameResult(Map<Rank, Integer> winningResult) {
+        this.winningResult = winningResult;
     }
 
     public int count(Rank rank) {
