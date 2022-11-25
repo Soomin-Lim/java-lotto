@@ -48,14 +48,13 @@ public class OutputView {
         System.out.println();
         System.out.println(LOTTO_GAME_RESULT_START_MESSAGE);
 
-        Map<Rank, Integer> winningResult = lottoGameResult.getWinningResult();
-        int money = lottoPurchaseMoney.getMoney();
-
-        printWinningResult(winningResult);
-        printProfitLate(winningResult, money);
+        printWinningResult(lottoGameResult);
+        printProfitLate(lottoGameResult, lottoPurchaseMoney);
     }
 
-    private static void printWinningResult(Map<Rank, Integer> winningResult) {
+    private static void printWinningResult(LottoGameResult lottoGameResult) {
+        Map<Rank, Integer> winningResult = lottoGameResult.getWinningResult();
+
         DecimalFormat df = new DecimalFormat("###,###");
         
         System.out.println(Rank.FIFTH.getCount()+ "개 일치 (" + df.format(Rank.FIFTH.getReward()) + "원) - " + winningResult.getOrDefault(Rank.FIFTH, 0) + "개");
@@ -65,16 +64,12 @@ public class OutputView {
         System.out.println(Rank.FIRST.getCount()+ "개 일치 (" + df.format(Rank.FIRST.getReward()) + "원) - " + winningResult.getOrDefault(Rank.FIRST, 0) + "개");
     }
 
-    private static void printProfitLate(Map<Rank, Integer> winningResult, int money) {
-        int profit = 0;
-        for (Rank rank : winningResult.keySet()) {
-            profit += rank.getReward() * winningResult.get(rank);
-        }
-
-        double profitRate = (double)profit / money * 100;
+    private static void printProfitLate(LottoGameResult lottoGameResult, LottoPurchaseMoney lottoPurchaseMoney) {
+        int money = lottoPurchaseMoney.getMoney();
+        double profitRate = lottoGameResult.calculateProfitLate(money);
 
         System.out.print("총 수익률은 ");
-        System.out.print(String.format("%.1f", profitRate));
+        System.out.printf("%.1f", profitRate);
         System.out.print("%입니다.");
     }
 }
