@@ -28,26 +28,16 @@ public class WinningLotto {
     }
 
     private void validateDuplicationWithWinningNumbers(int bonusNumber) {
-        if (winningLotto.getNumbers()
-                .stream()
-                .anyMatch(number -> number == bonusNumber)) {
+        if (winningLotto.contains(bonusNumber)) {
             throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE);
         }
     }
 
     public Rank compare(Lotto lotto) {
-        int count = countSameNumbers(lotto);
-        boolean isBonus = lotto.getNumbers().contains(bonusNumber);
+        int count = winningLotto.matchCount(lotto);
+        boolean isBonus = lotto.contains(bonusNumber);
 
         Rank rank = Rank.findRank(count, isBonus);
         return rank;
-    }
-
-    private int countSameNumbers(Lotto lotto) {
-        long count = winningLotto.getNumbers()
-                .stream()
-                .filter(winningNumber -> lotto.getNumbers().contains(winningNumber))
-                .count();
-        return (int)count;
     }
 }
