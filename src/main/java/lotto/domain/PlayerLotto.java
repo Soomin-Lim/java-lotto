@@ -1,8 +1,6 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class PlayerLotto {
 
@@ -26,6 +24,17 @@ public class PlayerLotto {
 
     public int size() {
         return lottos.size();
+    }
+
+    public Map<Rank, Integer> createWinningResult(WinningLotto winningLotto) {
+        Map<Rank, Integer> result = new HashMap<>();
+
+        lottos.forEach(lotto -> {
+            Rank rank = winningLotto.compare(lotto);
+            result.put(rank, result.getOrDefault(rank, 0) + 1);
+        });
+
+        return result;
     }
 
     public List<Lotto> getLottos() {

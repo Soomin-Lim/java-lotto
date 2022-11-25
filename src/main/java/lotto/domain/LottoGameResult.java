@@ -8,18 +8,7 @@ public class LottoGameResult {
     private final Map<Rank, Integer> winningResult;
 
     public LottoGameResult(PlayerLotto playerLotto, WinningLotto winningLotto) {
-        this.winningResult = createWinningResult(playerLotto, winningLotto);
-    }
-
-    private Map<Rank, Integer> createWinningResult(PlayerLotto playerLotto, WinningLotto winningLotto) {
-        Map<Rank, Integer> result = new HashMap<>();
-
-        for (Lotto lotto : playerLotto.getLottos()) {
-            Rank rank = winningLotto.compare(lotto);
-            result.put(rank, result.getOrDefault(rank, 0) + 1);
-        }
-
-        return result;
+        this.winningResult = playerLotto.createWinningResult(winningLotto);
     }
 
     public int count(Rank rank) {
