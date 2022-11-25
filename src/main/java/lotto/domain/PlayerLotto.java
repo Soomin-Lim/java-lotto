@@ -13,7 +13,7 @@ public class PlayerLotto {
     }
 
     public List<Lotto> issue(LottoPurchaseMoney lottoPurchaseMoney) {
-        int number = lottoPurchaseMoney.getMoney() / LottoPurchaseMoney.LOTTO_PRICE;
+        int number = lottoPurchaseMoney.getLottoNumber();
 
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < number; i++) {

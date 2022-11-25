@@ -30,6 +30,10 @@ public class LottoPurchaseMoney {
         }
     }
 
+    public int getLottoNumber() {
+        return money / LOTTO_PRICE;
+    }
+
     public int getMoney() {
         return money;
     }
