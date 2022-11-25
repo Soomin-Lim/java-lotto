@@ -3,21 +3,19 @@ package lotto.domain;
 import java.util.Arrays;
 
 public enum Rank {
-    FIRST(6, 2000000000, false),
-    SECOND(5, 30000000, true),
-    THIRD(5, 1500000, false),
-    FOURTH(4, 50000, false),
-    FIFTH(3, 5000, false),
-    NOTHING(0, 0, false);
+    FIRST(6, 2000000000),
+    SECOND(5, 30000000),
+    THIRD(5, 1500000),
+    FOURTH(4, 50000),
+    FIFTH(3, 5000),
+    NOTHING(0, 0);
 
     private final int count;
     private final int reward;
-    private final boolean isBonus;
 
-    Rank(int count, int reward, boolean isBonus) {
+    Rank(int count, int reward) {
         this.count = count;
         this.reward = reward;
-        this.isBonus = isBonus;
     }
 
     public static Rank findRank(int count, boolean isBonus) {
