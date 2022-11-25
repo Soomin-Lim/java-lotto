@@ -6,6 +6,7 @@ import lotto.domain.PlayerLotto;
 import lotto.domain.WinningLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
+
 import java.util.List;
 
 public class LottoGameController {
@@ -27,20 +28,12 @@ public class LottoGameController {
     }
 
     private LottoPurchaseMoney createLottoPurchaseMoney() {
-        try {
-            int money = InputView.lottoPurchaseMoney();
-            return new LottoPurchaseMoney(money);
-        } catch (IllegalArgumentException e) {
-            throw e;
-        }
+        int money = InputView.lottoPurchaseMoney();
+        return new LottoPurchaseMoney(money);
     }
 
     private PlayerLotto createPlayerLotto(LottoPurchaseMoney lottoPurchaseMoney) {
-        try {
-            return new PlayerLotto(lottoPurchaseMoney);
-        } catch (IllegalArgumentException e) {
-            throw e;
-        }
+        return new PlayerLotto(lottoPurchaseMoney);
     }
 
     private void printPlayerLotto(PlayerLotto playerLotto) {
@@ -48,14 +41,10 @@ public class LottoGameController {
     }
 
     private WinningLotto createWinningLotto() {
-        try {
-            List<Integer> winningNumbers = InputView.winningNumbers();
-            int bonusNumber = InputView.bonusNumber();
+        List<Integer> winningNumbers = InputView.winningNumbers();
+        int bonusNumber = InputView.bonusNumber();
 
-            return new WinningLotto(winningNumbers, bonusNumber);
-        } catch (IllegalArgumentException e) {
-            throw e;
-        }
+        return new WinningLotto(winningNumbers, bonusNumber);
     }
 
     private LottoGameResult createLottoGameResult(PlayerLotto playerLotto, WinningLotto winningLotto) {
