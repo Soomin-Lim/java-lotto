@@ -53,15 +53,13 @@ public class OutputView {
     }
 
     private static void printWinningResult(LottoGameResult lottoGameResult) {
-        Map<Rank, Integer> winningResult = lottoGameResult.getWinningResult();
-
         DecimalFormat df = new DecimalFormat("###,###");
         
-        System.out.println(Rank.FIFTH.getCount()+ "개 일치 (" + df.format(Rank.FIFTH.getReward()) + "원) - " + winningResult.getOrDefault(Rank.FIFTH, 0) + "개");
-        System.out.println(Rank.FOURTH.getCount()+ "개 일치 (" + df.format(Rank.FOURTH.getReward()) + "원) - " + winningResult.getOrDefault(Rank.FOURTH, 0) + "개");
-        System.out.println(Rank.THIRD.getCount()+ "개 일치 (" + df.format(Rank.THIRD.getReward()) + "원) - " + winningResult.getOrDefault(Rank.THIRD, 0) + "개");
-        System.out.println(Rank.SECOND.getCount()+ "개 일치, 보너스 볼 일치 (" + df.format(Rank.SECOND.getReward()) + "원) - " + winningResult.getOrDefault(Rank.SECOND, 0) + "개");
-        System.out.println(Rank.FIRST.getCount()+ "개 일치 (" + df.format(Rank.FIRST.getReward()) + "원) - " + winningResult.getOrDefault(Rank.FIRST, 0) + "개");
+        System.out.println(Rank.FIFTH.getCount()+ "개 일치 (" + df.format(Rank.FIFTH.getReward()) + "원) - " + lottoGameResult.count(Rank.FIFTH) + "개");
+        System.out.println(Rank.FOURTH.getCount()+ "개 일치 (" + df.format(Rank.FOURTH.getReward()) + "원) - " + lottoGameResult.count(Rank.FOURTH) + "개");
+        System.out.println(Rank.THIRD.getCount()+ "개 일치 (" + df.format(Rank.THIRD.getReward()) + "원) - " + lottoGameResult.count(Rank.THIRD) + "개");
+        System.out.println(Rank.SECOND.getCount()+ "개 일치, 보너스 볼 일치 (" + df.format(Rank.SECOND.getReward()) + "원) - " + lottoGameResult.count(Rank.SECOND) + "개");
+        System.out.println(Rank.FIRST.getCount()+ "개 일치 (" + df.format(Rank.FIRST.getReward()) + "원) - " + lottoGameResult.count(Rank.FIRST) + "개");
     }
 
     private static void printProfitLate(LottoGameResult lottoGameResult, LottoPurchaseMoney lottoPurchaseMoney) {
