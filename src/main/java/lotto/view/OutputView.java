@@ -1,12 +1,8 @@
 package lotto.view;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoGameResult;
-import lotto.domain.LottoPurchaseMoney;
-import lotto.domain.Rank;
+import lotto.domain.*;
 import java.text.DecimalFormat;
 import java.util.List;
-import java.util.Map;
 
 public class OutputView {
 
@@ -23,10 +19,11 @@ public class OutputView {
         System.out.println(ERROR_MESSAGE + errorMessage);
     }
 
-    public static void printLottos(List<Lotto> lottos) {
+    public static void printLottos(PlayerLotto playerLotto) {
         System.out.println();
-        printLottoSize(lottos.size());
-        lottos.forEach(OutputView::printLotto);
+
+        printLottoSize(playerLotto.size());
+        playerLotto.getLottos().forEach(OutputView::printLotto);
     }
 
     private static void printLottoSize(int size) {

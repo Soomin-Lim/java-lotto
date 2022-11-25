@@ -6,7 +6,6 @@ import lotto.domain.PlayerLotto;
 import lotto.domain.WinningLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
-
 import java.util.List;
 
 public class LottoGameController {
@@ -37,7 +36,7 @@ public class LottoGameController {
     }
 
     private void printPlayerLotto(PlayerLotto playerLotto) {
-        OutputView.printLottos(playerLotto.getLottos());
+        OutputView.printLottos(playerLotto);
     }
 
     private WinningLotto createWinningLotto() {
