@@ -13,10 +13,10 @@ class PlayerLottoTest {
     @Test
     void createPlayerLotto() {
         LottoPurchaseMoney money = new LottoPurchaseMoney(3000);
-
         PlayerLotto playerLotto = new PlayerLotto(money);
-        List<Lotto> result = playerLotto.getLottos();
 
-        assertThat(result).hasSize(3);
+        int size = playerLotto.size();
+
+        assertThat(size).isEqualTo(3);
     }
 }
